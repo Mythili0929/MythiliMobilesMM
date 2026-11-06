@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop All Mobiles — MythiliMobiles</title>
+<meta name="description" content="Browse and filter the full MythiliMobiles smartphone catalog by brand, price, RAM, storage and features.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / <span id="catalog-heading">All Mobiles</span></div>
+    <h1 id="page-title">All Mobiles</h1>
+    <p>Find your perfect smartphone from 15+ trusted brands.</p>
+  </div>
+</div>
+
+<div class="section container">
+  <div class="chip-row" id="chip-row"></div>
+  <div class="catalog-layout">
+    <aside class="filters-panel">
+      <div class="filter-group">
+        <h4>Search</h4>
+        <input type="text" id="catalog-search" placeholder="Search mobiles..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid var(--line);">
+      </div>
+      <div class="filter-group">
+        <h4>Price</h4>
+        <label class="filter-option"><input type="checkbox" data-price="[0,10000]"> Under ₹10,000</label>
+        <label class="filter-option"><input type="checkbox" data-price="[10000,20000]"> ₹10,000 – ₹20,000</label>
+        <label class="filter-option"><input type="checkbox" data-price="[20000,40000]"> ₹20,000 – ₹40,000</label>
+        <label class="filter-option"><input type="checkbox" data-price="[40000,60000]"> ₹40,000 – ₹60,000</label>
+        <label class="filter-option"><input type="checkbox" data-price="[60000,999999]"> Above ₹60,000</label>
+      </div>
+      <div class="filter-group">
+        <h4>RAM</h4>
+        <label class="filter-option"><input type="checkbox" data-ram="4"> 4 GB</label>
+        <label class="filter-option"><input type="checkbox" data-ram="6"> 6 GB</label>
+        <label class="filter-option"><input type="checkbox" data-ram="8"> 8 GB</label>
+        <label class="filter-option"><input type="checkbox" data-ram="12"> 12 GB</label>
+        <label class="filter-option"><input type="checkbox" data-ram="16"> 16 GB</label>
+      </div>
+      <div class="filter-group">
+        <h4>Storage</h4>
+        <label class="filter-option"><input type="checkbox" data-storage="64"> 64 GB</label>
+        <label class="filter-option"><input type="checkbox" data-storage="128"> 128 GB</label>
+        <label class="filter-option"><input type="checkbox" data-storage="256"> 256 GB</label>
+        <label class="filter-option"><input type="checkbox" data-storage="512"> 512 GB</label>
+        <label class="filter-option"><input type="checkbox" data-storage="1024"> 1 TB</label>
+      </div>
+      <div class="filter-group">
+        <h4>Features</h4>
+        <label class="filter-option"><input type="checkbox" data-feature="5G"> 5G</label>
+        <label class="filter-option"><input type="checkbox" data-feature="Fast Charging"> Fast Charging</label>
+        <label class="filter-option"><input type="checkbox" data-feature="AMOLED"> AMOLED</label>
+        <label class="filter-option"><input type="checkbox" data-feature="High Refresh Rate"> High Refresh Rate</label>
+        <label class="filter-option"><input type="checkbox" data-feature="Dual SIM"> Dual SIM</label>
+        <label class="filter-option"><input type="checkbox" data-feature="NFC"> NFC</label>
+      </div>
+    </aside>
+    <div>
+      <div class="catalog-toolbar">
+        <span class="results-count" id="results-count"></span>
+        <select id="sort-select">
+          <option value="popular">Most Popular</option>
+          <option value="price-low">Price: Low → High</option>
+          <option value="price-high">Price: High → Low</option>
+          <option value="newest">Newest</option>
+          <option value="rated">Best Rated</option>
+          <option value="discount">Biggest Discount</option>
+        </select>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>

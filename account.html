@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — MythiliMobiles</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<div class="page-header"><div class="container"><h1>My Account</h1><p>This is a demo account dashboard using data stored on this device.</p></div></div>
+
+<section class="section container">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="orders">My Orders</button>
+    <button class="tab-btn" data-tab="prebookings">Pre-Bookings</button>
+    <button class="tab-btn" data-tab="wishlist">Wishlist</button>
+  </div>
+  <div class="tab-panel active" data-panel="orders" id="orders-panel"></div>
+  <div class="tab-panel" data-panel="prebookings" id="prebookings-panel"></div>
+  <div class="tab-panel" data-panel="wishlist" id="wishlist-panel"></div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+  document.querySelectorAll(".tab-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(".tab-btn").forEach(b=>b.classList.toggle("active", b===btn));
+      document.querySelectorAll(".tab-panel").forEach(p=>p.classList.toggle("active", p.dataset.panel===btn.dataset.tab));
+    });
+  });
+  const orders = Store.get("mm_orders", []);
+  document.getElementById("orders-panel").innerHTML = orders.length
+    ? orders.map(o=>`<div class="cart-row"><div></div><div><b>${o.id}</b><br><span style="font-size:12.5px;color:var(--text-dim);">${new Date(o.date).toLocaleDateString("en-IN")} · ${o.status}</span></div><div>${formatINR(o.total)}</div></div>`).join("")
+    : `<div class="empty-state"><h3>No orders yet</h3><a class="btn btn-primary" href="mobiles.html" style="margin-top:14px;">Start Shopping</a></div>`;
+
+  const bookings = Store.get("mm_prebookings", []);
+  document.getElementById("prebookings-panel").innerHTML = bookings.length
+    ? bookings.map(b=>`<div class="cart-row"><div></div><div><b>${b.id}</b><br><span style="font-size:12.5px;color:var(--text-dim);">${b.product}</span></div><div>${new Date(b.date).toLocaleDateString("en-IN")}</div></div>`).join("")
+    : `<div class="empty-state"><h3>No pre-bookings yet</h3><a class="btn btn-primary" href="prebooking.html" style="margin-top:14px;">View Upcoming Phones</a></div>`;
+
+  const wl = Wishlist.items().map(getProduct).filter(Boolean);
+  document.getElementById("wishlist-panel").innerHTML = wl.length
+    ? `<div class="product-grid">${wl.map(productCardHTML).join("")}</div>`
+    : `<div class="empty-state"><h3>Your wishlist is empty</h3><a class="btn btn-primary" href="mobiles.html" style="margin-top:14px;">Browse Mobiles</a></div>`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pre-Book Upcoming Phones — MythiliMobiles</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.modal-overlay{ position:fixed; inset:0; background:rgba(18,20,26,.55); display:none; align-items:center; justify-content:center; z-index:300; padding:20px; }
+.modal-overlay.open{ display:flex; }
+.modal-box{ background:var(--paper); border-radius:20px; padding:28px; max-width:440px; width:100%; max-height:88vh; overflow:auto; }
+.modal-box h3{ margin-top:0; }
+</style>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<div class="page-header"><div class="container"><h1>Pre-Book Upcoming Phones</h1><p>Reserve the newest smartphones before they launch.</p></div></div>
+<div class="section container">
+  <div class="product-grid" id="prebooking-grid"></div>
+</div>
+
+<div class="modal-overlay" id="prebook-modal">
+  <div class="modal-box">
+    <button class="btn btn-outline btn-sm close-modal" style="float:right;">✕</button>
+    <h3>Pre-Book: <span id="prebook-product-name"></span></h3>
+    <form>
+      <div class="form-field"><label>Customer Name</label><input required></div>
+      <div class="form-field"><label>Email</label><input type="email" required></div>
+      <div class="form-field"><label>Phone Number</label><input required></div>
+      <div class="form-field"><label>Preferred Color</label><select id="prebook-color"></select></div>
+      <div class="form-field"><label>Quantity</label><input type="number" min="1" value="1" required></div>
+      <div class="form-field"><label>Delivery Location</label><input required></div>
+      <button class="btn btn-primary btn-block" type="submit">Confirm Pre-Booking</button>
+    </form>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pages.js"></script>
+</body>
+</html>
